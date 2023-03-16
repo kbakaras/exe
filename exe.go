@@ -36,7 +36,10 @@ func exe(jar string) {
 
 func main() {
 
-	imagePath := os.Args[0]
+	imagePath, err := os.Executable()
+	if err != nil {
+		panic(err)
+	}
 
 	jar := imagePath + ".jar"
 	if exists(jar) {
